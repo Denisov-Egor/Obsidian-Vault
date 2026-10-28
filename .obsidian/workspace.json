@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Roadmap/Roadmap_Rust.md",
+                "file": "Roadmap/Roadmap_Zig.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Roadmap_Rust"
+              "title": "Roadmap_Zig"
             }
           }
         ]
@@ -185,11 +185,11 @@
       "bases:Создать новую базу": false
     }
   },
-  "active": "e38352e7329e8494",
+  "active": "ea7c65b7c0a0ffe9",
   "lastOpenFiles": [
+    "Roadmap/Roadmap_Rust.md",
     "Roadmap/Roadmap_Zig.md",
     "Roadmap",
-    "Roadmap/Roadmap_Rust.md",
     "С++/План обучения/04 - struct, enum и enum class.md",
     "С++/План обучения/03 - Ссылки, указатели и динамическая память.md",
     "С++/План обучения/01 - Основы C++.md",
