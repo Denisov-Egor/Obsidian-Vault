@@ -1,0 +1,3167 @@
+{
+  "version": 4,
+  "projects": [
+    {
+      "fieldConfig": {
+        "date": {
+          "time": false
+        },
+        "since": {
+          "time": false
+        },
+        "doneDate": {
+          "time": false
+        },
+        "startTime": {
+          "time": true
+        },
+        "endTime": {
+          "time": true
+        },
+        "client": {
+          "relation": {
+            "targetProjectId": "13f1584c-e815-4afe-94b2-e26c6ae01223"
+          }
+        },
+        "service": {
+          "relation": {
+            "targetProjectId": "13f1584c-e815-4afe-94b2-e26c6ae01223"
+          }
+        },
+        "Проведено визитов": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "sessions",
+            "function": "sum",
+            "backlink": {
+              "projectId": "13f1584c-e815-4afe-94b2-e26c6ae01223",
+              "relationField": "client"
+            }
+          }
+        },
+        "Оплачено": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "paidAmount",
+            "function": "sum",
+            "backlink": {
+              "projectId": "13f1584c-e815-4afe-94b2-e26c6ae01223",
+              "relationField": "client"
+            }
+          }
+        },
+        "Долг": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "debt",
+            "function": "sum",
+            "backlink": {
+              "projectId": "13f1584c-e815-4afe-94b2-e26c6ae01223",
+              "relationField": "client"
+            }
+          }
+        },
+        "Последнее самочувствие": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "wellbeingAfter",
+            "function": "last_value",
+            "backlink": {
+              "projectId": "13f1584c-e815-4afe-94b2-e26c6ae01223",
+              "relationField": "client"
+            },
+            "orderBy": "date"
+          }
+        },
+        "Среднее самочувствие": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "wellbeingAfter",
+            "function": "avg",
+            "backlink": {
+              "projectId": "13f1584c-e815-4afe-94b2-e26c6ae01223",
+              "relationField": "client"
+            }
+          }
+        },
+        "Последний визит": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "doneDate",
+            "function": "last_value",
+            "backlink": {
+              "projectId": "13f1584c-e815-4afe-94b2-e26c6ae01223",
+              "relationField": "client"
+            },
+            "orderBy": "date"
+          }
+        },
+        "Текущий вес": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "weight",
+            "function": "last_value",
+            "backlink": {
+              "projectId": "d0a64c7b-241a-4462-bc14-a616bab66ad7",
+              "relationField": "person"
+            },
+            "orderBy": "date"
+          }
+        },
+        "Тренировки, мин": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "trainingMinutes",
+            "function": "sum",
+            "backlink": {
+              "projectId": "d0a64c7b-241a-4462-bc14-a616bab66ad7",
+              "relationField": "person"
+            }
+          }
+        },
+        "Сон, ч": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "sleep",
+            "function": "avg",
+            "backlink": {
+              "projectId": "d0a64c7b-241a-4462-bc14-a616bab66ad7",
+              "relationField": "person"
+            }
+          }
+        },
+        "Выручка": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "paidAmount",
+            "function": "sum",
+            "backlink": {
+              "projectId": "13f1584c-e815-4afe-94b2-e26c6ae01223",
+              "relationField": "service"
+            }
+          }
+        },
+        "Проведено сеансов": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "sessions",
+            "function": "sum",
+            "backlink": {
+              "projectId": "13f1584c-e815-4afe-94b2-e26c6ae01223",
+              "relationField": "service"
+            }
+          }
+        }
+      },
+      "defaultName": "",
+      "templates": [],
+      "excludedNotes": [],
+      "isDefault": false,
+      "dataSource": {
+        "kind": "folder",
+        "config": {
+          "path": "Projects Plus - Демо 2/Кабинет",
+          "recursive": false
+        }
+      },
+      "newNotesFolder": "",
+      "views": [
+        {
+          "config": {
+            "widgets": [
+              {
+                "id": "w-1793655214820",
+                "type": "stats",
+                "title": "Кабинет за полгода",
+                "layout": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 12,
+                  "h": 2
+                },
+                "config": {
+                  "cards": [
+                    {
+                      "id": "k1",
+                      "label": "Проведено визитов",
+                      "field": "sessions",
+                      "aggregation": "sum"
+                    },
+                    {
+                      "id": "k2",
+                      "label": "Выручка",
+                      "field": "paidAmount",
+                      "aggregation": "sum",
+                      "format": "currency",
+                      "currencySymbol": "₽"
+                    },
+                    {
+                      "id": "k3",
+                      "label": "Расходы",
+                      "field": "amount",
+                      "aggregation": "sum",
+                      "format": "currency",
+                      "currencySymbol": "₽"
+                    },
+                    {
+                      "id": "k4",
+                      "label": "Чистая прибыль",
+                      "field": "net",
+                      "aggregation": "sum",
+                      "format": "currency",
+                      "currencySymbol": "₽"
+                    },
+                    {
+                      "id": "k5",
+                      "label": "Средний чек",
+                      "field": "paidAmount",
+                      "aggregation": "avg",
+                      "format": "currency",
+                      "currencySymbol": "₽"
+                    },
+                    {
+                      "id": "k6",
+                      "label": "Долги клиентов",
+                      "field": "debt",
+                      "aggregation": "sum",
+                      "format": "currency",
+                      "currencySymbol": "₽"
+                    }
+                  ],
+                  "columns": 3
+                }
+              },
+              {
+                "id": "w-1793655214821",
+                "type": "chart",
+                "title": "Выручка, расходы и прибыль по месяцам",
+                "layout": {
+                  "x": 0,
+                  "y": 2,
+                  "w": 12,
+                  "h": 4
+                },
+                "config": {
+                  "chartType": "bar",
+                  "xAxis": {
+                    "property": "date",
+                    "sortBy": "label",
+                    "sortOrder": "asc",
+                    "omitZero": false,
+                    "dateGranularity": "month"
+                  },
+                  "yAxis": {
+                    "label": "Выручка",
+                    "property": "paidAmount",
+                    "aggregation": "sum"
+                  },
+                  "series": [
+                    {
+                      "id": "s-exp",
+                      "label": "Расходы",
+                      "property": "amount",
+                      "aggregation": "sum"
+                    },
+                    {
+                      "id": "s-net",
+                      "label": "Прибыль",
+                      "property": "net",
+                      "aggregation": "sum"
+                    }
+                  ],
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": true,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": false
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214822",
+                "type": "text",
+                "title": "Как читать этот обзор",
+                "layout": {
+                  "x": 0,
+                  "y": 6,
+                  "w": 12,
+                  "h": 1
+                },
+                "config": {
+                  "content": "Выберите клиента в таблице «Клиенты» (меню строки → «Фильтровать связанные блоки по этой строке»): блок «Визиты клиента» и график самочувствия покажут только его. Колонки клиента — визиты, оплаты, долг, самочувствие, вес, тренировки и сон — считаются из визитов этого проекта и из записей проекта «Демо: Трекер», которые ссылаются на клиента."
+                }
+              },
+              {
+                "id": "w-1793655214819",
+                "type": "database-call",
+                "title": "Клиенты",
+                "layout": {
+                  "x": 0,
+                  "y": 7,
+                  "w": 12,
+                  "h": 4
+                },
+                "config": {
+                  "viewTabs": [
+                    {
+                      "id": "table",
+                      "label": "Таблица",
+                      "viewType": "table",
+                      "config": {
+                        "fieldConfig": {
+                          "date": {
+                            "hide": true
+                          },
+                          "startTime": {
+                            "hide": true
+                          },
+                          "endTime": {
+                            "hide": true
+                          },
+                          "client": {
+                            "hide": true
+                          },
+                          "service": {
+                            "hide": true
+                          },
+                          "serviceName": {
+                            "hide": true
+                          },
+                          "status": {
+                            "hide": true
+                          },
+                          "price": {
+                            "hide": true
+                          },
+                          "paid": {
+                            "hide": true
+                          },
+                          "paidAmount": {
+                            "hide": true
+                          },
+                          "debt": {
+                            "hide": true
+                          },
+                          "net": {
+                            "hide": true
+                          },
+                          "sessions": {
+                            "hide": true
+                          },
+                          "doneDate": {
+                            "hide": true
+                          },
+                          "wellbeingBefore": {
+                            "hide": true
+                          },
+                          "wellbeingAfter": {
+                            "hide": true
+                          },
+                          "payer": {
+                            "hide": true
+                          },
+                          "color": {
+                            "hide": true
+                          },
+                          "icon": {
+                            "hide": true
+                          },
+                          "cover": {
+                            "hide": true
+                          },
+                          "goal": {
+                            "hide": true
+                          },
+                          "amount": {
+                            "hide": true
+                          },
+                          "category": {
+                            "hide": true
+                          },
+                          "duration": {
+                            "hide": true
+                          },
+                          "client_backlinks": {
+                            "hide": true
+                          },
+                          "service_backlinks": {
+                            "hide": true
+                          },
+                          "person_backlinks": {
+                            "hide": true
+                          },
+                          "Выручка": {
+                            "hide": true
+                          },
+                          "Проведено сеансов": {
+                            "hide": true
+                          },
+                          "path": {
+                            "hide": true
+                          },
+                          "tags": {
+                            "hide": true
+                          },
+                          "type": {
+                            "hide": true
+                          },
+                          "pp_created_time": {
+                            "hide": true
+                          },
+                          "pp_last_edited_time": {
+                            "hide": true
+                          },
+                          "name": {
+                            "width": 180
+                          },
+                          "source": {
+                            "width": 110
+                          },
+                          "since": {
+                            "width": 110
+                          }
+                        },
+                        "orderFields": [
+                          "name",
+                          "Проведено визитов",
+                          "Оплачено",
+                          "Долг",
+                          "Последнее самочувствие",
+                          "Среднее самочувствие",
+                          "Последний визит",
+                          "Текущий вес",
+                          "Тренировки, мин",
+                          "Сон, ч",
+                          "source",
+                          "since"
+                        ],
+                        "aggregations": {
+                          "Проведено визитов": "sum",
+                          "Оплачено": "sum",
+                          "Долг": "sum",
+                          "name": "count_total"
+                        },
+                        "showAggregationRow": true,
+                        "rowHeight": "default",
+                        "wrapText": false
+                      }
+                    }
+                  ],
+                  "activeTabId": "table",
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "client",
+                        "enabled": true
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214823",
+                "type": "database-call",
+                "title": "Визиты клиента",
+                "layout": {
+                  "x": 0,
+                  "y": 11,
+                  "w": 6,
+                  "h": 4
+                },
+                "config": {
+                  "viewTabs": [
+                    {
+                      "id": "table",
+                      "label": "Таблица",
+                      "viewType": "table",
+                      "config": {
+                        "fieldConfig": {
+                          "startTime": {
+                            "hide": true
+                          },
+                          "endTime": {
+                            "hide": true
+                          },
+                          "client": {
+                            "hide": true
+                          },
+                          "service": {
+                            "hide": true
+                          },
+                          "paidAmount": {
+                            "hide": true
+                          },
+                          "debt": {
+                            "hide": true
+                          },
+                          "net": {
+                            "hide": true
+                          },
+                          "sessions": {
+                            "hide": true
+                          },
+                          "doneDate": {
+                            "hide": true
+                          },
+                          "payer": {
+                            "hide": true
+                          },
+                          "color": {
+                            "hide": true
+                          },
+                          "icon": {
+                            "hide": true
+                          },
+                          "cover": {
+                            "hide": true
+                          },
+                          "since": {
+                            "hide": true
+                          },
+                          "source": {
+                            "hide": true
+                          },
+                          "goal": {
+                            "hide": true
+                          },
+                          "amount": {
+                            "hide": true
+                          },
+                          "category": {
+                            "hide": true
+                          },
+                          "duration": {
+                            "hide": true
+                          },
+                          "client_backlinks": {
+                            "hide": true
+                          },
+                          "service_backlinks": {
+                            "hide": true
+                          },
+                          "person_backlinks": {
+                            "hide": true
+                          },
+                          "Проведено визитов": {
+                            "hide": true
+                          },
+                          "Оплачено": {
+                            "hide": true
+                          },
+                          "Долг": {
+                            "hide": true
+                          },
+                          "Последнее самочувствие": {
+                            "hide": true
+                          },
+                          "Среднее самочувствие": {
+                            "hide": true
+                          },
+                          "Последний визит": {
+                            "hide": true
+                          },
+                          "Текущий вес": {
+                            "hide": true
+                          },
+                          "Тренировки, мин": {
+                            "hide": true
+                          },
+                          "Сон, ч": {
+                            "hide": true
+                          },
+                          "Выручка": {
+                            "hide": true
+                          },
+                          "Проведено сеансов": {
+                            "hide": true
+                          },
+                          "path": {
+                            "hide": true
+                          },
+                          "tags": {
+                            "hide": true
+                          },
+                          "type": {
+                            "hide": true
+                          },
+                          "pp_created_time": {
+                            "hide": true
+                          },
+                          "pp_last_edited_time": {
+                            "hide": true
+                          },
+                          "name": {
+                            "width": 220
+                          },
+                          "date": {
+                            "width": 110
+                          }
+                        },
+                        "orderFields": [
+                          "name",
+                          "date",
+                          "serviceName",
+                          "status",
+                          "price",
+                          "paid",
+                          "wellbeingBefore",
+                          "wellbeingAfter"
+                        ],
+                        "aggregations": {
+                          "price": "sum",
+                          "name": "count_total"
+                        },
+                        "showAggregationRow": true,
+                        "rowHeight": "default",
+                        "wrapText": false
+                      }
+                    }
+                  ],
+                  "activeTabId": "table",
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "visit",
+                        "enabled": true
+                      }
+                    ]
+                  },
+                  "linkedSelection": {
+                    "sourceWidgetId": "w-1793655214819",
+                    "relationField": "client"
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214824",
+                "type": "chart",
+                "title": "Самочувствие клиента",
+                "layout": {
+                  "x": 6,
+                  "y": 11,
+                  "w": 6,
+                  "h": 4
+                },
+                "config": {
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "visit",
+                        "enabled": true
+                      },
+                      {
+                        "field": "wellbeingAfter",
+                        "operator": "is-not-empty",
+                        "enabled": true
+                      }
+                    ]
+                  },
+                  "chartType": "line",
+                  "xAxis": {
+                    "property": "date",
+                    "sortBy": "label",
+                    "sortOrder": "asc",
+                    "omitZero": false,
+                    "dateGranularity": "week"
+                  },
+                  "yAxis": {
+                    "label": "После визита",
+                    "property": "wellbeingAfter",
+                    "aggregation": "avg"
+                  },
+                  "linkedSelection": {
+                    "sourceWidgetId": "w-1793655214819",
+                    "relationField": "client"
+                  },
+                  "series": [
+                    {
+                      "id": "s-before",
+                      "label": "До визита",
+                      "property": "wellbeingBefore",
+                      "aggregation": "avg",
+                      "selectionField": "client"
+                    },
+                    {
+                      "id": "s-mood",
+                      "label": "Настроение (трекер)",
+                      "property": "mood",
+                      "aggregation": "avg",
+                      "dataProjectId": "d0a64c7b-241a-4462-bc14-a616bab66ad7",
+                      "selectionField": "person"
+                    }
+                  ],
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": true,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": false,
+                    "smooth": true
+                  }
+                }
+              }
+            ],
+            "table": {
+              "fieldConfig": {
+                "path": {
+                  "hide": true
+                },
+                "tags": {
+                  "hide": true
+                },
+                "type": {
+                  "hide": true
+                },
+                "pp_created_time": {
+                  "hide": true
+                },
+                "pp_last_edited_time": {
+                  "hide": true
+                }
+              },
+              "orderFields": [],
+              "aggregations": {},
+              "showAggregationRow": false,
+              "rowHeight": "default",
+              "wrapText": false
+            },
+            "layoutMode": "stack",
+            "layoutVersion": 1,
+            "showWidgetToolbar": true,
+            "compactMode": false
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "name": "Обзор кабинета",
+          "id": "d8b160b7-5497-4bf1-ada4-eb7b30579d1c",
+          "type": "dashboard"
+        },
+        {
+          "config": {
+            "interval": "week",
+            "displayMode": "bars",
+            "startDateField": "date",
+            "dateField": "date",
+            "startTimeField": "startTime",
+            "endTimeField": "endTime",
+            "eventColorField": "color",
+            "checkField": "paid",
+            "startHour": 9,
+            "endHour": 21,
+            "timezone": "local",
+            "timeFormat": "24h",
+            "agendaOpen": true
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": [
+              {
+                "field": "type",
+                "operator": "is",
+                "value": "visit",
+                "enabled": true
+              }
+            ]
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "name": "Расписание",
+          "id": "279f97c9-8b12-46e3-8e6e-f4979e98f97a",
+          "type": "calendar"
+        },
+        {
+          "config": {
+            "groupByField": "status",
+            "headerField": "client",
+            "includeFields": [
+              "serviceName",
+              "date",
+              "startTime",
+              "price",
+              "paid"
+            ],
+            "columns": {
+              "запланирован": {
+                "weight": 1
+              },
+              "проведён": {
+                "weight": 1.5
+              },
+              "отменён": {
+                "weight": 1
+              }
+            }
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": [
+              {
+                "field": "type",
+                "operator": "is",
+                "value": "visit",
+                "enabled": true
+              }
+            ]
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": [
+              {
+                "field": "date",
+                "order": "asc",
+                "enabled": true
+              }
+            ]
+          },
+          "name": "Визиты по статусам",
+          "id": "7d6e568c-8644-4a44-a2be-b8d78092ef6f",
+          "type": "board"
+        },
+        {
+          "config": {
+            "coverField": "cover",
+            "fitStyle": "cover",
+            "iconField": "icon",
+            "cardWidth": 260,
+            "includeFields": [
+              "goal",
+              "Проведено визитов",
+              "Последнее самочувствие",
+              "Последний визит",
+              "Текущий вес"
+            ]
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": [
+              {
+                "field": "type",
+                "operator": "is",
+                "value": "client",
+                "enabled": true
+              }
+            ]
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": [
+              {
+                "field": "since",
+                "order": "asc",
+                "enabled": true
+              }
+            ]
+          },
+          "name": "Клиенты",
+          "id": "9020b2bd-a0c3-4e05-ab3e-de7e5f34e80f",
+          "type": "gallery"
+        },
+        {
+          "config": {
+            "widgets": [
+              {
+                "id": "w-1793655214825",
+                "type": "database-call",
+                "title": "Услуги",
+                "layout": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 6,
+                  "h": 3
+                },
+                "config": {
+                  "viewTabs": [
+                    {
+                      "id": "table",
+                      "label": "Таблица",
+                      "viewType": "table",
+                      "config": {
+                        "fieldConfig": {
+                          "date": {
+                            "hide": true
+                          },
+                          "startTime": {
+                            "hide": true
+                          },
+                          "endTime": {
+                            "hide": true
+                          },
+                          "client": {
+                            "hide": true
+                          },
+                          "service": {
+                            "hide": true
+                          },
+                          "serviceName": {
+                            "hide": true
+                          },
+                          "status": {
+                            "hide": true
+                          },
+                          "paid": {
+                            "hide": true
+                          },
+                          "paidAmount": {
+                            "hide": true
+                          },
+                          "debt": {
+                            "hide": true
+                          },
+                          "net": {
+                            "hide": true
+                          },
+                          "sessions": {
+                            "hide": true
+                          },
+                          "doneDate": {
+                            "hide": true
+                          },
+                          "wellbeingBefore": {
+                            "hide": true
+                          },
+                          "wellbeingAfter": {
+                            "hide": true
+                          },
+                          "payer": {
+                            "hide": true
+                          },
+                          "color": {
+                            "hide": true
+                          },
+                          "icon": {
+                            "hide": true
+                          },
+                          "cover": {
+                            "hide": true
+                          },
+                          "since": {
+                            "hide": true
+                          },
+                          "source": {
+                            "hide": true
+                          },
+                          "goal": {
+                            "hide": true
+                          },
+                          "amount": {
+                            "hide": true
+                          },
+                          "category": {
+                            "hide": true
+                          },
+                          "client_backlinks": {
+                            "hide": true
+                          },
+                          "service_backlinks": {
+                            "hide": true
+                          },
+                          "person_backlinks": {
+                            "hide": true
+                          },
+                          "Проведено визитов": {
+                            "hide": true
+                          },
+                          "Оплачено": {
+                            "hide": true
+                          },
+                          "Долг": {
+                            "hide": true
+                          },
+                          "Последнее самочувствие": {
+                            "hide": true
+                          },
+                          "Среднее самочувствие": {
+                            "hide": true
+                          },
+                          "Последний визит": {
+                            "hide": true
+                          },
+                          "Текущий вес": {
+                            "hide": true
+                          },
+                          "Тренировки, мин": {
+                            "hide": true
+                          },
+                          "Сон, ч": {
+                            "hide": true
+                          },
+                          "path": {
+                            "hide": true
+                          },
+                          "tags": {
+                            "hide": true
+                          },
+                          "type": {
+                            "hide": true
+                          },
+                          "pp_created_time": {
+                            "hide": true
+                          },
+                          "pp_last_edited_time": {
+                            "hide": true
+                          },
+                          "name": {
+                            "width": 200
+                          }
+                        },
+                        "orderFields": [
+                          "name",
+                          "duration",
+                          "price",
+                          "Проведено сеансов",
+                          "Выручка"
+                        ],
+                        "aggregations": {
+                          "Выручка": "sum",
+                          "Проведено сеансов": "sum"
+                        },
+                        "showAggregationRow": true,
+                        "rowHeight": "default",
+                        "wrapText": false
+                      }
+                    }
+                  ],
+                  "activeTabId": "table",
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "service",
+                        "enabled": true
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214826",
+                "type": "chart",
+                "title": "Визиты по услугам",
+                "layout": {
+                  "x": 6,
+                  "y": 0,
+                  "w": 6,
+                  "h": 3
+                },
+                "config": {
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "visit",
+                        "enabled": true
+                      },
+                      {
+                        "field": "sessions",
+                        "operator": "is-not-empty",
+                        "enabled": true
+                      }
+                    ]
+                  },
+                  "chartType": "donut",
+                  "xAxis": {
+                    "property": "serviceName",
+                    "sortBy": "value",
+                    "sortOrder": "desc",
+                    "omitZero": true
+                  },
+                  "yAxis": {
+                    "property": "sessions",
+                    "aggregation": "sum"
+                  },
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": false,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": true
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214827",
+                "type": "chart",
+                "title": "Выручка по услугам",
+                "layout": {
+                  "x": 0,
+                  "y": 3,
+                  "w": 12,
+                  "h": 4
+                },
+                "config": {
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "visit",
+                        "enabled": true
+                      },
+                      {
+                        "field": "paidAmount",
+                        "operator": "is-not-empty",
+                        "enabled": true
+                      }
+                    ]
+                  },
+                  "chartType": "bar",
+                  "xAxis": {
+                    "property": "serviceName",
+                    "sortBy": "value",
+                    "sortOrder": "desc",
+                    "omitZero": true
+                  },
+                  "yAxis": {
+                    "label": "Выручка",
+                    "property": "paidAmount",
+                    "aggregation": "sum"
+                  },
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": true,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": false
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214828",
+                "type": "database-call",
+                "title": "Расходы кабинета",
+                "layout": {
+                  "x": 0,
+                  "y": 7,
+                  "w": 6,
+                  "h": 4
+                },
+                "config": {
+                  "viewTabs": [
+                    {
+                      "id": "table",
+                      "label": "Таблица",
+                      "viewType": "table",
+                      "config": {
+                        "fieldConfig": {
+                          "startTime": {
+                            "hide": true
+                          },
+                          "endTime": {
+                            "hide": true
+                          },
+                          "client": {
+                            "hide": true
+                          },
+                          "service": {
+                            "hide": true
+                          },
+                          "serviceName": {
+                            "hide": true
+                          },
+                          "status": {
+                            "hide": true
+                          },
+                          "price": {
+                            "hide": true
+                          },
+                          "paid": {
+                            "hide": true
+                          },
+                          "paidAmount": {
+                            "hide": true
+                          },
+                          "debt": {
+                            "hide": true
+                          },
+                          "net": {
+                            "hide": true
+                          },
+                          "sessions": {
+                            "hide": true
+                          },
+                          "doneDate": {
+                            "hide": true
+                          },
+                          "wellbeingBefore": {
+                            "hide": true
+                          },
+                          "wellbeingAfter": {
+                            "hide": true
+                          },
+                          "payer": {
+                            "hide": true
+                          },
+                          "color": {
+                            "hide": true
+                          },
+                          "icon": {
+                            "hide": true
+                          },
+                          "cover": {
+                            "hide": true
+                          },
+                          "since": {
+                            "hide": true
+                          },
+                          "source": {
+                            "hide": true
+                          },
+                          "goal": {
+                            "hide": true
+                          },
+                          "duration": {
+                            "hide": true
+                          },
+                          "client_backlinks": {
+                            "hide": true
+                          },
+                          "service_backlinks": {
+                            "hide": true
+                          },
+                          "person_backlinks": {
+                            "hide": true
+                          },
+                          "Проведено визитов": {
+                            "hide": true
+                          },
+                          "Оплачено": {
+                            "hide": true
+                          },
+                          "Долг": {
+                            "hide": true
+                          },
+                          "Последнее самочувствие": {
+                            "hide": true
+                          },
+                          "Среднее самочувствие": {
+                            "hide": true
+                          },
+                          "Последний визит": {
+                            "hide": true
+                          },
+                          "Текущий вес": {
+                            "hide": true
+                          },
+                          "Тренировки, мин": {
+                            "hide": true
+                          },
+                          "Сон, ч": {
+                            "hide": true
+                          },
+                          "Выручка": {
+                            "hide": true
+                          },
+                          "Проведено сеансов": {
+                            "hide": true
+                          },
+                          "path": {
+                            "hide": true
+                          },
+                          "tags": {
+                            "hide": true
+                          },
+                          "type": {
+                            "hide": true
+                          },
+                          "pp_created_time": {
+                            "hide": true
+                          },
+                          "pp_last_edited_time": {
+                            "hide": true
+                          },
+                          "name": {
+                            "width": 220
+                          },
+                          "date": {
+                            "width": 110
+                          }
+                        },
+                        "orderFields": [
+                          "name",
+                          "date",
+                          "category",
+                          "amount"
+                        ],
+                        "aggregations": {
+                          "amount": "sum",
+                          "name": "count_total"
+                        },
+                        "showAggregationRow": true,
+                        "rowHeight": "default",
+                        "wrapText": false
+                      }
+                    }
+                  ],
+                  "activeTabId": "table",
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "expense",
+                        "enabled": true
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214829",
+                "type": "chart",
+                "title": "Расходы по статьям",
+                "layout": {
+                  "x": 6,
+                  "y": 7,
+                  "w": 6,
+                  "h": 4
+                },
+                "config": {
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "expense",
+                        "enabled": true
+                      }
+                    ]
+                  },
+                  "chartType": "donut",
+                  "xAxis": {
+                    "property": "category",
+                    "sortBy": "value",
+                    "sortOrder": "desc",
+                    "omitZero": true
+                  },
+                  "yAxis": {
+                    "property": "amount",
+                    "aggregation": "sum"
+                  },
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": false,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": true
+                  }
+                }
+              }
+            ],
+            "table": {
+              "fieldConfig": {
+                "path": {
+                  "hide": true
+                },
+                "tags": {
+                  "hide": true
+                },
+                "type": {
+                  "hide": true
+                },
+                "pp_created_time": {
+                  "hide": true
+                },
+                "pp_last_edited_time": {
+                  "hide": true
+                }
+              },
+              "orderFields": [],
+              "aggregations": {},
+              "showAggregationRow": false,
+              "rowHeight": "default",
+              "wrapText": false
+            },
+            "layoutMode": "stack",
+            "layoutVersion": 1,
+            "showWidgetToolbar": true,
+            "compactMode": false
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "name": "Услуги и расходы",
+          "id": "d2fa99ff-7951-494a-b545-a3f46762ae9d",
+          "type": "dashboard"
+        }
+      ],
+      "dateFormat": {
+        "writeFormat": "YYYY-MM-DD",
+        "preset": "iso"
+      },
+      "name": "Демо: Массажный кабинет",
+      "id": "13f1584c-e815-4afe-94b2-e26c6ae01223",
+      "path": "Projects Plus - Демо 2/Кабинет"
+    },
+    {
+      "fieldConfig": {
+        "date": {
+          "time": false
+        },
+        "person": {
+          "relation": {
+            "targetProjectId": "13f1584c-e815-4afe-94b2-e26c6ae01223"
+          }
+        }
+      },
+      "defaultName": "",
+      "templates": [],
+      "excludedNotes": [],
+      "isDefault": false,
+      "dataSource": {
+        "kind": "folder",
+        "config": {
+          "path": "Projects Plus - Демо 2/Трекер",
+          "recursive": false
+        }
+      },
+      "newNotesFolder": "",
+      "views": [
+        {
+          "config": {
+            "widgets": [
+              {
+                "id": "w-1793655214831",
+                "type": "text",
+                "title": "Как читать трекер",
+                "layout": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 12,
+                  "h": 1
+                },
+                "config": {
+                  "content": "Таблица ниже читает клиентов из проекта «Демо: Массажный кабинет» — только для чтения; её колонки вес, тренировки и сон считаются из записей этого трекера. Сначала выберите клиента (меню строки → «Фильтровать связанные блоки по этой строке»): показатели и графики покажут только его — без выбора они усредняют всех троих. Линия «Самочувствие после визита» приходит из визитов кабинета."
+                }
+              },
+              {
+                "id": "w-1793655214830",
+                "type": "database-call",
+                "title": "Клиенты кабинета",
+                "layout": {
+                  "x": 0,
+                  "y": 1,
+                  "w": 12,
+                  "h": 4
+                },
+                "sourceConfig": {
+                  "projectId": "13f1584c-e815-4afe-94b2-e26c6ae01223"
+                },
+                "config": {
+                  "viewTabs": [
+                    {
+                      "id": "table",
+                      "label": "Таблица",
+                      "viewType": "table",
+                      "config": {
+                        "fieldConfig": {
+                          "date": {
+                            "hide": true
+                          },
+                          "startTime": {
+                            "hide": true
+                          },
+                          "endTime": {
+                            "hide": true
+                          },
+                          "client": {
+                            "hide": true
+                          },
+                          "service": {
+                            "hide": true
+                          },
+                          "serviceName": {
+                            "hide": true
+                          },
+                          "status": {
+                            "hide": true
+                          },
+                          "price": {
+                            "hide": true
+                          },
+                          "paid": {
+                            "hide": true
+                          },
+                          "paidAmount": {
+                            "hide": true
+                          },
+                          "debt": {
+                            "hide": true
+                          },
+                          "net": {
+                            "hide": true
+                          },
+                          "sessions": {
+                            "hide": true
+                          },
+                          "doneDate": {
+                            "hide": true
+                          },
+                          "wellbeingBefore": {
+                            "hide": true
+                          },
+                          "wellbeingAfter": {
+                            "hide": true
+                          },
+                          "payer": {
+                            "hide": true
+                          },
+                          "color": {
+                            "hide": true
+                          },
+                          "icon": {
+                            "hide": true
+                          },
+                          "cover": {
+                            "hide": true
+                          },
+                          "goal": {
+                            "hide": true
+                          },
+                          "amount": {
+                            "hide": true
+                          },
+                          "category": {
+                            "hide": true
+                          },
+                          "duration": {
+                            "hide": true
+                          },
+                          "client_backlinks": {
+                            "hide": true
+                          },
+                          "service_backlinks": {
+                            "hide": true
+                          },
+                          "person_backlinks": {
+                            "hide": true
+                          },
+                          "Выручка": {
+                            "hide": true
+                          },
+                          "Проведено сеансов": {
+                            "hide": true
+                          },
+                          "path": {
+                            "hide": true
+                          },
+                          "tags": {
+                            "hide": true
+                          },
+                          "type": {
+                            "hide": true
+                          },
+                          "pp_created_time": {
+                            "hide": true
+                          },
+                          "pp_last_edited_time": {
+                            "hide": true
+                          },
+                          "name": {
+                            "width": 180
+                          },
+                          "source": {
+                            "width": 110
+                          },
+                          "since": {
+                            "width": 110
+                          }
+                        },
+                        "orderFields": [
+                          "name",
+                          "Проведено визитов",
+                          "Оплачено",
+                          "Долг",
+                          "Последнее самочувствие",
+                          "Среднее самочувствие",
+                          "Последний визит",
+                          "Текущий вес",
+                          "Тренировки, мин",
+                          "Сон, ч",
+                          "source",
+                          "since"
+                        ],
+                        "aggregations": {
+                          "Проведено визитов": "sum",
+                          "Оплачено": "sum",
+                          "Долг": "sum",
+                          "name": "count_total"
+                        },
+                        "showAggregationRow": true,
+                        "rowHeight": "default",
+                        "wrapText": false
+                      }
+                    }
+                  ],
+                  "activeTabId": "table",
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "client",
+                        "enabled": true
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214832",
+                "type": "stats",
+                "title": "Показатели клиента",
+                "layout": {
+                  "x": 0,
+                  "y": 5,
+                  "w": 12,
+                  "h": 2
+                },
+                "config": {
+                  "linkedSelection": {
+                    "sourceWidgetId": "w-1793655214830",
+                    "relationField": "person"
+                  },
+                  "cards": [
+                    {
+                      "id": "t1",
+                      "label": "Средний сон, ч",
+                      "field": "sleep",
+                      "aggregation": "avg"
+                    },
+                    {
+                      "id": "t2",
+                      "label": "Среднее настроение",
+                      "field": "mood",
+                      "aggregation": "avg"
+                    },
+                    {
+                      "id": "t3",
+                      "label": "Средняя боль",
+                      "field": "pain",
+                      "aggregation": "avg"
+                    },
+                    {
+                      "id": "t4",
+                      "label": "Тренировки, мин",
+                      "field": "trainingMinutes",
+                      "aggregation": "sum"
+                    }
+                  ],
+                  "columns": 4
+                }
+              },
+              {
+                "id": "w-1793655214833",
+                "type": "chart",
+                "title": "Вес и тренировки клиента",
+                "layout": {
+                  "x": 0,
+                  "y": 7,
+                  "w": 12,
+                  "h": 4
+                },
+                "config": {
+                  "chartType": "line",
+                  "xAxis": {
+                    "property": "date",
+                    "sortBy": "label",
+                    "sortOrder": "asc",
+                    "omitZero": false,
+                    "dateGranularity": "week"
+                  },
+                  "yAxis": {
+                    "label": "Вес, кг",
+                    "property": "weight",
+                    "aggregation": "avg"
+                  },
+                  "linkedSelection": {
+                    "sourceWidgetId": "w-1793655214830",
+                    "relationField": "person"
+                  },
+                  "series": [
+                    {
+                      "id": "s-train",
+                      "label": "Тренировки, мин",
+                      "property": "trainingMinutes",
+                      "aggregation": "sum",
+                      "axis": "right",
+                      "selectionField": "person"
+                    }
+                  ],
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": true,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": false
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214834",
+                "type": "chart",
+                "title": "Настроение, энергия, боль и самочувствие после визита — клиента",
+                "layout": {
+                  "x": 0,
+                  "y": 11,
+                  "w": 12,
+                  "h": 4
+                },
+                "config": {
+                  "chartType": "line",
+                  "xAxis": {
+                    "property": "date",
+                    "sortBy": "label",
+                    "sortOrder": "asc",
+                    "omitZero": false,
+                    "dateGranularity": "week"
+                  },
+                  "yAxis": {
+                    "label": "Настроение",
+                    "property": "mood",
+                    "aggregation": "avg"
+                  },
+                  "linkedSelection": {
+                    "sourceWidgetId": "w-1793655214830",
+                    "relationField": "person"
+                  },
+                  "series": [
+                    {
+                      "id": "s-energy",
+                      "label": "Энергия",
+                      "property": "energy",
+                      "aggregation": "avg",
+                      "selectionField": "person"
+                    },
+                    {
+                      "id": "s-pain",
+                      "label": "Боль",
+                      "property": "pain",
+                      "aggregation": "avg",
+                      "selectionField": "person"
+                    },
+                    {
+                      "id": "s-visit",
+                      "label": "Самочувствие после визита",
+                      "property": "wellbeingAfter",
+                      "aggregation": "avg",
+                      "dataProjectId": "13f1584c-e815-4afe-94b2-e26c6ae01223",
+                      "xProperty": "date",
+                      "selectionField": "client"
+                    }
+                  ],
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": true,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": false,
+                    "smooth": true
+                  }
+                }
+              }
+            ],
+            "table": {
+              "fieldConfig": {
+                "path": {
+                  "hide": true
+                },
+                "tags": {
+                  "hide": true
+                },
+                "type": {
+                  "hide": true
+                },
+                "pp_created_time": {
+                  "hide": true
+                },
+                "pp_last_edited_time": {
+                  "hide": true
+                }
+              },
+              "orderFields": [],
+              "aggregations": {},
+              "showAggregationRow": false,
+              "rowHeight": "default",
+              "wrapText": false
+            },
+            "layoutMode": "stack",
+            "layoutVersion": 1,
+            "showWidgetToolbar": true,
+            "compactMode": false
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "name": "Динамика",
+          "id": "db6185a9-fa46-4057-9f96-5f68c47ff80e",
+          "type": "dashboard"
+        },
+        {
+          "config": {
+            "interval": "month",
+            "displayMode": "bars",
+            "startDateField": "date",
+            "dateField": "date",
+            "eventColorField": "color",
+            "startHour": 6,
+            "endHour": 22,
+            "timezone": "local",
+            "timeFormat": "24h",
+            "agendaOpen": false
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": [
+              {
+                "field": "trainingMinutes",
+                "operator": "gt",
+                "value": "0",
+                "enabled": true
+              }
+            ]
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "name": "Календарь тренировок",
+          "id": "72528893-8321-4892-b1e5-cde434b4c8a4",
+          "type": "calendar"
+        },
+        {
+          "config": {
+            "groupByField": "trainingType",
+            "headerField": "person",
+            "includeFields": [
+              "date",
+              "trainingMinutes",
+              "mood",
+              "pain"
+            ],
+            "columns": {
+              "Бег": {
+                "weight": 1
+              },
+              "Силовая": {
+                "weight": 1
+              },
+              "Йога": {
+                "weight": 1
+              },
+              "Плавание": {
+                "weight": 1
+              }
+            }
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": [
+              {
+                "field": "trainingMinutes",
+                "operator": "gt",
+                "value": "0",
+                "enabled": true
+              }
+            ]
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": [
+              {
+                "field": "date",
+                "order": "desc",
+                "enabled": true
+              }
+            ]
+          },
+          "name": "Виды тренировок",
+          "id": "33e590fe-5f23-4289-921e-c86521096fec",
+          "type": "board"
+        },
+        {
+          "config": {
+            "widgets": [
+              {
+                "id": "w-1793655214835",
+                "type": "chart",
+                "title": "Минуты тренировок по неделям",
+                "layout": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 12,
+                  "h": 4
+                },
+                "config": {
+                  "chartType": "bar",
+                  "xAxis": {
+                    "property": "date",
+                    "sortBy": "label",
+                    "sortOrder": "asc",
+                    "omitZero": false,
+                    "dateGranularity": "week"
+                  },
+                  "yAxis": {
+                    "label": "Минуты",
+                    "property": "trainingMinutes",
+                    "aggregation": "sum"
+                  },
+                  "series": [
+                    {
+                      "id": "s-sleep",
+                      "label": "Сон, ч (среднее)",
+                      "property": "sleep",
+                      "aggregation": "avg",
+                      "axis": "right"
+                    }
+                  ],
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": true,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": false
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214836",
+                "type": "chart",
+                "title": "Сон и настроение",
+                "layout": {
+                  "x": 0,
+                  "y": 4,
+                  "w": 6,
+                  "h": 4
+                },
+                "config": {
+                  "chartType": "scatter",
+                  "xAxis": {
+                    "property": "sleep",
+                    "sortBy": "label",
+                    "sortOrder": "asc",
+                    "omitZero": false
+                  },
+                  "yAxis": {
+                    "property": "mood",
+                    "aggregation": "avg"
+                  },
+                  "colorBy": "trainingType",
+                  "showTrendLine": true,
+                  "showR2": true,
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": true,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": false
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214837",
+                "type": "chart",
+                "title": "Минуты по видам тренировок",
+                "layout": {
+                  "x": 6,
+                  "y": 4,
+                  "w": 6,
+                  "h": 4
+                },
+                "config": {
+                  "chartType": "donut",
+                  "xAxis": {
+                    "property": "trainingType",
+                    "sortBy": "value",
+                    "sortOrder": "desc",
+                    "omitZero": true
+                  },
+                  "yAxis": {
+                    "property": "trainingMinutes",
+                    "aggregation": "sum"
+                  },
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": false,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": true
+                  }
+                }
+              }
+            ],
+            "table": {
+              "fieldConfig": {
+                "path": {
+                  "hide": true
+                },
+                "tags": {
+                  "hide": true
+                },
+                "type": {
+                  "hide": true
+                },
+                "pp_created_time": {
+                  "hide": true
+                },
+                "pp_last_edited_time": {
+                  "hide": true
+                }
+              },
+              "orderFields": [],
+              "aggregations": {},
+              "showAggregationRow": false,
+              "rowHeight": "default",
+              "wrapText": false
+            },
+            "layoutMode": "stack",
+            "layoutVersion": 1,
+            "showWidgetToolbar": true,
+            "compactMode": false
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "name": "Недели",
+          "id": "bbebe589-2b73-4c90-b145-aec6fc8c7064",
+          "type": "dashboard"
+        },
+        {
+          "config": {
+            "widgets": [
+              {
+                "id": "w-1793655214838",
+                "type": "database-call",
+                "title": "Все записи",
+                "layout": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 12,
+                  "h": 8
+                },
+                "config": {
+                  "viewTabs": [
+                    {
+                      "id": "table",
+                      "label": "Таблица",
+                      "viewType": "table",
+                      "config": {
+                        "fieldConfig": {
+                          "color": {
+                            "hide": true
+                          },
+                          "person_backlinks": {
+                            "hide": true
+                          },
+                          "path": {
+                            "hide": true
+                          },
+                          "tags": {
+                            "hide": true
+                          },
+                          "type": {
+                            "hide": true
+                          },
+                          "pp_created_time": {
+                            "hide": true
+                          },
+                          "pp_last_edited_time": {
+                            "hide": true
+                          },
+                          "name": {
+                            "width": 230
+                          },
+                          "date": {
+                            "width": 110
+                          },
+                          "person": {
+                            "width": 160
+                          }
+                        },
+                        "orderFields": [
+                          "name",
+                          "date",
+                          "person",
+                          "weight",
+                          "sleep",
+                          "mood",
+                          "energy",
+                          "pain",
+                          "trainingType",
+                          "trainingMinutes"
+                        ],
+                        "aggregations": {
+                          "weight": "avg",
+                          "sleep": "avg",
+                          "mood": "avg",
+                          "energy": "avg",
+                          "pain": "avg",
+                          "trainingMinutes": "sum",
+                          "name": "count_total"
+                        },
+                        "showAggregationRow": true,
+                        "rowHeight": "default",
+                        "wrapText": false
+                      }
+                    }
+                  ],
+                  "activeTabId": "table",
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "entry",
+                        "enabled": true
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "table": {
+              "fieldConfig": {
+                "path": {
+                  "hide": true
+                },
+                "tags": {
+                  "hide": true
+                },
+                "type": {
+                  "hide": true
+                },
+                "pp_created_time": {
+                  "hide": true
+                },
+                "pp_last_edited_time": {
+                  "hide": true
+                }
+              },
+              "orderFields": [],
+              "aggregations": {},
+              "showAggregationRow": false,
+              "rowHeight": "default",
+              "wrapText": false
+            },
+            "layoutMode": "stack",
+            "layoutVersion": 1,
+            "showWidgetToolbar": true,
+            "compactMode": false
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": [
+              {
+                "field": "date",
+                "order": "desc",
+                "enabled": true
+              }
+            ]
+          },
+          "name": "Журнал",
+          "id": "895b1cdc-3cdb-4d70-9796-b31055faee72",
+          "type": "dashboard"
+        }
+      ],
+      "dateFormat": {
+        "writeFormat": "YYYY-MM-DD",
+        "preset": "iso"
+      },
+      "name": "Демо: Трекер",
+      "id": "d0a64c7b-241a-4462-bc14-a616bab66ad7",
+      "path": "Projects Plus - Демо 2/Трекер"
+    },
+    {
+      "fieldConfig": {
+        "date": {
+          "time": false
+        },
+        "category": {
+          "relation": {
+            "targetProjectId": "886b8cf2-5287-4f1e-b071-a2a4cd32dc4d"
+          }
+        },
+        "Прошло за полгода": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "amount",
+            "function": "sum",
+            "backlink": {
+              "projectId": "886b8cf2-5287-4f1e-b071-a2a4cd32dc4d",
+              "relationField": "category"
+            }
+          }
+        },
+        "Операций": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "amount",
+            "function": "count_values",
+            "backlink": {
+              "projectId": "886b8cf2-5287-4f1e-b071-a2a4cd32dc4d",
+              "relationField": "category"
+            }
+          }
+        },
+        "Последняя операция": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "date",
+            "function": "last_value",
+            "backlink": {
+              "projectId": "886b8cf2-5287-4f1e-b071-a2a4cd32dc4d",
+              "relationField": "category"
+            },
+            "orderBy": "date"
+          }
+        },
+        "Средняя операция": {
+          "rollup": {
+            "relationField": "",
+            "targetField": "amount",
+            "function": "avg",
+            "backlink": {
+              "projectId": "886b8cf2-5287-4f1e-b071-a2a4cd32dc4d",
+              "relationField": "category"
+            }
+          }
+        }
+      },
+      "defaultName": "",
+      "templates": [],
+      "excludedNotes": [],
+      "isDefault": false,
+      "dataSource": {
+        "kind": "folder",
+        "config": {
+          "path": "Projects Plus - Демо 2/Финансы",
+          "recursive": false
+        }
+      },
+      "newNotesFolder": "",
+      "views": [
+        {
+          "config": {
+            "widgets": [
+              {
+                "id": "w-1793655214839",
+                "type": "stats",
+                "title": "Личный бюджет за полгода",
+                "layout": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 8,
+                  "h": 2
+                },
+                "config": {
+                  "cards": [
+                    {
+                      "id": "f1",
+                      "label": "Доходы",
+                      "field": "income",
+                      "aggregation": "sum",
+                      "format": "currency",
+                      "currencySymbol": "₽"
+                    },
+                    {
+                      "id": "f2",
+                      "label": "Расходы",
+                      "field": "expense",
+                      "aggregation": "sum",
+                      "format": "currency",
+                      "currencySymbol": "₽"
+                    },
+                    {
+                      "id": "f3",
+                      "label": "Остаток",
+                      "field": "balance",
+                      "aggregation": "sum",
+                      "format": "currency",
+                      "currencySymbol": "₽"
+                    },
+                    {
+                      "id": "f4",
+                      "label": "Средняя трата",
+                      "field": "expense",
+                      "aggregation": "avg",
+                      "format": "currency",
+                      "currencySymbol": "₽"
+                    }
+                  ],
+                  "columns": 4
+                }
+              },
+              {
+                "id": "w-1793655214840",
+                "type": "stats",
+                "title": "Частная практика (из «Демо: Массажный кабинет»)",
+                "layout": {
+                  "x": 8,
+                  "y": 0,
+                  "w": 4,
+                  "h": 2
+                },
+                "config": {
+                  "dataProjectId": "13f1584c-e815-4afe-94b2-e26c6ae01223",
+                  "cards": [
+                    {
+                      "id": "c1",
+                      "label": "Выручка",
+                      "field": "paidAmount",
+                      "aggregation": "sum",
+                      "format": "currency",
+                      "currencySymbol": "₽"
+                    },
+                    {
+                      "id": "c2",
+                      "label": "Чистая прибыль",
+                      "field": "net",
+                      "aggregation": "sum",
+                      "format": "currency",
+                      "currencySymbol": "₽"
+                    }
+                  ],
+                  "columns": 2
+                }
+              },
+              {
+                "id": "w-1793655214841",
+                "type": "chart",
+                "title": "Расходы, доходы и прибыль практики по месяцам",
+                "layout": {
+                  "x": 0,
+                  "y": 2,
+                  "w": 12,
+                  "h": 4
+                },
+                "config": {
+                  "chartType": "bar",
+                  "xAxis": {
+                    "property": "date",
+                    "sortBy": "label",
+                    "sortOrder": "asc",
+                    "omitZero": false,
+                    "dateGranularity": "month"
+                  },
+                  "yAxis": {
+                    "label": "Расходы",
+                    "property": "expense",
+                    "aggregation": "sum"
+                  },
+                  "series": [
+                    {
+                      "id": "s-inc",
+                      "label": "Доходы",
+                      "property": "income",
+                      "aggregation": "sum"
+                    },
+                    {
+                      "id": "s-cab",
+                      "label": "Прибыль практики",
+                      "property": "net",
+                      "aggregation": "sum",
+                      "dataProjectId": "13f1584c-e815-4afe-94b2-e26c6ae01223"
+                    }
+                  ],
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": true,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": false
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214842",
+                "type": "chart",
+                "title": "Расходы по статьям",
+                "layout": {
+                  "x": 0,
+                  "y": 6,
+                  "w": 6,
+                  "h": 4
+                },
+                "config": {
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "kind",
+                        "operator": "is",
+                        "value": "Расход",
+                        "enabled": true
+                      }
+                    ]
+                  },
+                  "chartType": "donut",
+                  "xAxis": {
+                    "property": "categoryName",
+                    "sortBy": "value",
+                    "sortOrder": "desc",
+                    "omitZero": true
+                  },
+                  "yAxis": {
+                    "property": "expense",
+                    "aggregation": "sum"
+                  },
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": false,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": true
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214843",
+                "type": "chart",
+                "title": "Остаток нарастающим итогом",
+                "layout": {
+                  "x": 6,
+                  "y": 6,
+                  "w": 6,
+                  "h": 4
+                },
+                "config": {
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "op",
+                        "enabled": true
+                      }
+                    ]
+                  },
+                  "chartType": "line",
+                  "xAxis": {
+                    "property": "date",
+                    "sortBy": "label",
+                    "sortOrder": "asc",
+                    "omitZero": false,
+                    "dateGranularity": "week"
+                  },
+                  "yAxis": {
+                    "label": "Остаток",
+                    "property": "balance",
+                    "aggregation": "sum",
+                    "cumulative": true
+                  },
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": true,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": false
+                  }
+                }
+              }
+            ],
+            "table": {
+              "fieldConfig": {
+                "path": {
+                  "hide": true
+                },
+                "tags": {
+                  "hide": true
+                },
+                "type": {
+                  "hide": true
+                },
+                "pp_created_time": {
+                  "hide": true
+                },
+                "pp_last_edited_time": {
+                  "hide": true
+                }
+              },
+              "orderFields": [],
+              "aggregations": {},
+              "showAggregationRow": false,
+              "rowHeight": "default",
+              "wrapText": false
+            },
+            "layoutMode": "stack",
+            "layoutVersion": 1,
+            "showWidgetToolbar": true,
+            "compactMode": false
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "name": "Бюджет",
+          "id": "614bc37e-9ef9-4e01-bf8e-d090aab7ebde",
+          "type": "dashboard"
+        },
+        {
+          "config": {
+            "widgets": [
+              {
+                "id": "w-1793655214845",
+                "type": "text",
+                "title": "Как читать статьи",
+                "layout": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 12,
+                  "h": 1
+                },
+                "config": {
+                  "content": "Колонки статьи — сколько прошло за полгода, сколько операций, средняя и последняя операция — считаются из операций, которые на неё ссылаются. Выберите статью (меню строки → «Фильтровать связанные блоки по этой строке»), и блок ниже покажет только её операции."
+                }
+              },
+              {
+                "id": "w-1793655214844",
+                "type": "database-call",
+                "title": "Статьи",
+                "layout": {
+                  "x": 0,
+                  "y": 1,
+                  "w": 12,
+                  "h": 4
+                },
+                "config": {
+                  "viewTabs": [
+                    {
+                      "id": "table",
+                      "label": "Таблица",
+                      "viewType": "table",
+                      "config": {
+                        "fieldConfig": {
+                          "date": {
+                            "hide": true
+                          },
+                          "category": {
+                            "hide": true
+                          },
+                          "categoryName": {
+                            "hide": true
+                          },
+                          "account": {
+                            "hide": true
+                          },
+                          "amount": {
+                            "hide": true
+                          },
+                          "income": {
+                            "hide": true
+                          },
+                          "expense": {
+                            "hide": true
+                          },
+                          "balance": {
+                            "hide": true
+                          },
+                          "color": {
+                            "hide": true
+                          },
+                          "category_backlinks": {
+                            "hide": true
+                          },
+                          "icon": {
+                            "hide": true
+                          },
+                          "path": {
+                            "hide": true
+                          },
+                          "tags": {
+                            "hide": true
+                          },
+                          "type": {
+                            "hide": true
+                          },
+                          "pp_created_time": {
+                            "hide": true
+                          },
+                          "pp_last_edited_time": {
+                            "hide": true
+                          },
+                          "name": {
+                            "width": 160
+                          }
+                        },
+                        "orderFields": [
+                          "name",
+                          "kind",
+                          "monthlyLimit",
+                          "Прошло за полгода",
+                          "Операций",
+                          "Средняя операция",
+                          "Последняя операция"
+                        ],
+                        "aggregations": {
+                          "Прошло за полгода": "sum",
+                          "Операций": "sum"
+                        },
+                        "showAggregationRow": true,
+                        "rowHeight": "default",
+                        "wrapText": false
+                      }
+                    }
+                  ],
+                  "activeTabId": "table",
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "category",
+                        "enabled": true
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214846",
+                "type": "database-call",
+                "title": "Операции статьи",
+                "layout": {
+                  "x": 0,
+                  "y": 5,
+                  "w": 6,
+                  "h": 4
+                },
+                "config": {
+                  "viewTabs": [
+                    {
+                      "id": "table",
+                      "label": "Таблица",
+                      "viewType": "table",
+                      "config": {
+                        "fieldConfig": {
+                          "category": {
+                            "hide": true
+                          },
+                          "income": {
+                            "hide": true
+                          },
+                          "expense": {
+                            "hide": true
+                          },
+                          "balance": {
+                            "hide": true
+                          },
+                          "color": {
+                            "hide": true
+                          },
+                          "category_backlinks": {
+                            "hide": true
+                          },
+                          "icon": {
+                            "hide": true
+                          },
+                          "monthlyLimit": {
+                            "hide": true
+                          },
+                          "Прошло за полгода": {
+                            "hide": true
+                          },
+                          "Операций": {
+                            "hide": true
+                          },
+                          "Последняя операция": {
+                            "hide": true
+                          },
+                          "Средняя операция": {
+                            "hide": true
+                          },
+                          "path": {
+                            "hide": true
+                          },
+                          "tags": {
+                            "hide": true
+                          },
+                          "type": {
+                            "hide": true
+                          },
+                          "pp_created_time": {
+                            "hide": true
+                          },
+                          "pp_last_edited_time": {
+                            "hide": true
+                          },
+                          "name": {
+                            "width": 230
+                          },
+                          "date": {
+                            "width": 110
+                          }
+                        },
+                        "orderFields": [
+                          "name",
+                          "date",
+                          "kind",
+                          "categoryName",
+                          "account",
+                          "amount"
+                        ],
+                        "aggregations": {
+                          "amount": "sum",
+                          "name": "count_total"
+                        },
+                        "showAggregationRow": true,
+                        "rowHeight": "default",
+                        "wrapText": false
+                      }
+                    }
+                  ],
+                  "activeTabId": "table",
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "op",
+                        "enabled": true
+                      }
+                    ]
+                  },
+                  "linkedSelection": {
+                    "sourceWidgetId": "w-1793655214844",
+                    "relationField": "category"
+                  }
+                }
+              },
+              {
+                "id": "w-1793655214847",
+                "type": "chart",
+                "title": "Траты по месяцам",
+                "layout": {
+                  "x": 6,
+                  "y": 5,
+                  "w": 6,
+                  "h": 4
+                },
+                "config": {
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "kind",
+                        "operator": "is",
+                        "value": "Расход",
+                        "enabled": true
+                      }
+                    ]
+                  },
+                  "chartType": "bar",
+                  "xAxis": {
+                    "property": "date",
+                    "sortBy": "label",
+                    "sortOrder": "asc",
+                    "omitZero": false,
+                    "dateGranularity": "month"
+                  },
+                  "yAxis": {
+                    "label": "Траты",
+                    "property": "expense",
+                    "aggregation": "sum"
+                  },
+                  "linkedSelection": {
+                    "sourceWidgetId": "w-1793655214844",
+                    "relationField": "category"
+                  },
+                  "style": {
+                    "colorScheme": "categorical",
+                    "height": "medium",
+                    "showGrid": true,
+                    "showLabels": true,
+                    "showLegend": true,
+                    "showValues": false
+                  }
+                }
+              }
+            ],
+            "table": {
+              "fieldConfig": {
+                "path": {
+                  "hide": true
+                },
+                "tags": {
+                  "hide": true
+                },
+                "type": {
+                  "hide": true
+                },
+                "pp_created_time": {
+                  "hide": true
+                },
+                "pp_last_edited_time": {
+                  "hide": true
+                }
+              },
+              "orderFields": [],
+              "aggregations": {},
+              "showAggregationRow": false,
+              "rowHeight": "default",
+              "wrapText": false
+            },
+            "layoutMode": "stack",
+            "layoutVersion": 1,
+            "showWidgetToolbar": true,
+            "compactMode": false
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "name": "Статьи",
+          "id": "d15359ea-b364-4489-b0bb-7b8797c27d0f",
+          "type": "dashboard"
+        },
+        {
+          "config": {
+            "groupByField": "categoryName",
+            "headerField": "date",
+            "includeFields": [
+              "amount",
+              "account"
+            ]
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": [
+              {
+                "field": "type",
+                "operator": "is",
+                "value": "op",
+                "enabled": true
+              }
+            ]
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": [
+              {
+                "field": "date",
+                "order": "desc",
+                "enabled": true
+              }
+            ]
+          },
+          "name": "Операции по статьям",
+          "id": "667a6d3e-4305-46d8-9bca-8b47a3390094",
+          "type": "board"
+        },
+        {
+          "config": {
+            "interval": "month",
+            "displayMode": "bars",
+            "startDateField": "date",
+            "dateField": "date",
+            "eventColorField": "color",
+            "startHour": 8,
+            "endHour": 22,
+            "timezone": "local",
+            "timeFormat": "24h",
+            "agendaOpen": false
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": [
+              {
+                "field": "type",
+                "operator": "is",
+                "value": "op",
+                "enabled": true
+              }
+            ]
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": []
+          },
+          "name": "Календарь операций",
+          "id": "988e9755-11a6-4442-b5ed-54d3e72b9f4e",
+          "type": "calendar"
+        },
+        {
+          "config": {
+            "widgets": [
+              {
+                "id": "w-1793655214848",
+                "type": "database-call",
+                "title": "Все операции",
+                "layout": {
+                  "x": 0,
+                  "y": 0,
+                  "w": 12,
+                  "h": 8
+                },
+                "config": {
+                  "viewTabs": [
+                    {
+                      "id": "table",
+                      "label": "Таблица",
+                      "viewType": "table",
+                      "config": {
+                        "fieldConfig": {
+                          "category": {
+                            "hide": true
+                          },
+                          "income": {
+                            "hide": true
+                          },
+                          "expense": {
+                            "hide": true
+                          },
+                          "balance": {
+                            "hide": true
+                          },
+                          "color": {
+                            "hide": true
+                          },
+                          "category_backlinks": {
+                            "hide": true
+                          },
+                          "icon": {
+                            "hide": true
+                          },
+                          "monthlyLimit": {
+                            "hide": true
+                          },
+                          "Прошло за полгода": {
+                            "hide": true
+                          },
+                          "Операций": {
+                            "hide": true
+                          },
+                          "Последняя операция": {
+                            "hide": true
+                          },
+                          "Средняя операция": {
+                            "hide": true
+                          },
+                          "path": {
+                            "hide": true
+                          },
+                          "tags": {
+                            "hide": true
+                          },
+                          "type": {
+                            "hide": true
+                          },
+                          "pp_created_time": {
+                            "hide": true
+                          },
+                          "pp_last_edited_time": {
+                            "hide": true
+                          },
+                          "name": {
+                            "width": 230
+                          },
+                          "date": {
+                            "width": 110
+                          }
+                        },
+                        "orderFields": [
+                          "name",
+                          "date",
+                          "kind",
+                          "categoryName",
+                          "account",
+                          "amount"
+                        ],
+                        "aggregations": {
+                          "amount": "sum",
+                          "name": "count_total"
+                        },
+                        "showAggregationRow": true,
+                        "rowHeight": "default",
+                        "wrapText": false
+                      }
+                    }
+                  ],
+                  "activeTabId": "table",
+                  "subFilter": {
+                    "conjunction": "and",
+                    "conditions": [
+                      {
+                        "field": "type",
+                        "operator": "is",
+                        "value": "op",
+                        "enabled": true
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "table": {
+              "fieldConfig": {
+                "path": {
+                  "hide": true
+                },
+                "tags": {
+                  "hide": true
+                },
+                "type": {
+                  "hide": true
+                },
+                "pp_created_time": {
+                  "hide": true
+                },
+                "pp_last_edited_time": {
+                  "hide": true
+                }
+              },
+              "orderFields": [],
+              "aggregations": {},
+              "showAggregationRow": false,
+              "rowHeight": "default",
+              "wrapText": false
+            },
+            "layoutMode": "stack",
+            "layoutVersion": 1,
+            "showWidgetToolbar": true,
+            "compactMode": false
+          },
+          "filter": {
+            "conjunction": "and",
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "sort": {
+            "criteria": [
+              {
+                "field": "date",
+                "order": "desc",
+                "enabled": true
+              }
+            ]
+          },
+          "name": "Журнал",
+          "id": "767d5e0b-acd3-43c0-81a6-7c49d06bd7b5",
+          "type": "dashboard"
+        }
+      ],
+      "dateFormat": {
+        "writeFormat": "YYYY-MM-DD",
+        "preset": "iso"
+      },
+      "name": "Демо: Личный бюджет",
+      "id": "886b8cf2-5287-4f1e-b071-a2a4cd32dc4d",
+      "path": "Projects Plus - Демо 2/Финансы"
+    }
+  ],
+  "archives": [],
+  "preferences": {
+    "projectSizeLimit": 1000,
+    "frontmatter": {
+      "quoteStrings": "PLAIN"
+    },
+    "locale": {
+      "firstDayOfWeek": "default"
+    },
+    "commands": [],
+    "linkBehavior": "open-editor",
+    "mobileCalendarView": "month",
+    "showViewTitles": true,
+    "animationBehavior": "smooth",
+    "disableHapticFeedback": false,
+    "replaceObsidianProperties": false
+  }
+}
